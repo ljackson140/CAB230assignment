@@ -1,0 +1,28 @@
+/* .jumbo{
+    background-image:url("jumboimg.jpeg");
+    background-size: cover;
+    height: 90vh;
+    color: white;
+} */
+
+.transbox {
+    background-color: #ffffff;
+    border: 1px solid black;
+    opacity: 0.75;
+    box-shadow: 5px 5px grey;
+    margin-bottom: 10px;
+  }
+
+.transMessage{
+    color: rgb(160, 63, 63);
+    text-align: center;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+p{
+    font-size: calc(1em + 1vw);
+}
+
+.title{
+    font-size: calc(1.5em + 1vw);
+}

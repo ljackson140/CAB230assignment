@@ -1,0 +1,35 @@
+.table {
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.industry-buttons{
+    width: 100px;
+}
+
+h1 {
+    text-align: center;
+    color: rgb(66, 63, 63);
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: bold !important;
+}
+
+h6 {
+    text-align: center;
+    color: rgb(66, 63, 63);
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.industry-drop{
+    text-align: center;
+    margin-bottom: 5px;
+}
+
+
+.ag-row-hover {
+    background-color: #ff6f6f !important;
+}
+
+.ag-cell-focus,
+.ag-cell-no-focus {
+    border: none !important;
+}
