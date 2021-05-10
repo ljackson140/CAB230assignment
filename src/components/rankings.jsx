@@ -1,12 +1,10 @@
 import React, { useState, useEffect } from "react";
 import { AgGridReact } from "ag-grid-react";
 import { Dropdown, DropdownToggle, DropdownMenu, DropdownItem, Button } from 'reactstrap';
-import { Redirect } from 'react-router-dom';
 import "ag-grid-community/dist/styles/ag-grid.css";
 import "ag-grid-community/dist/styles/ag-theme-balham.css";
 import "ag-grid-community/dist/styles/ag-theme-alpine-dark.css";
 import "./ranking.css";
-import "./home.css";
 
 
 const years = [
@@ -41,20 +39,23 @@ function Rankings() {
             .then(senData => setRowData(senData));
     }, [year]);
 
+    function clickHander(props) {
+        setSelected(props.data.year);
+    }
     function setYearFunc() {
         setYear(this.link);
     }
 
     function Dropdownmenu(){
-        const [dropdownOpen, setDropdownOpen] = useState(false);
-        const toggle = () => setDropdownOpen(prevState => !prevState);
+        const [openDropDown, setOpenDropDown] = useState(false);
+        const toggle = () => setOpenDropDown(prevState => !prevState);
 
         return (
-            <Dropdown isOpen={dropdownOpen} toggle={toggle}>
+            <Dropdown isOpen={openDropDown} toggle={toggle}>
                 <DropdownToggle caret>
                     Year
                 </DropdownToggle>
-                <DropdownMenu className="industry-drop">
+                <DropdownMenu className="years-drop">
                     {years.map(data => (
                         <React.Fragment key={data.title}>
                             <DropdownItem onClick={setYearFunc.bind(data)}>{data.title}</DropdownItem>
@@ -65,16 +66,12 @@ function Rankings() {
         )
     }
 
-    function clickHander(props) {
-        setSelected(props.data.year);
-    }
-
     const columns = [
         { headerName: "Rank", field: "rank", filter: "agTextColumnFilter", filter: true, sortable: true, width:"200", flex:"300" },
         { headerName: "Country", field: "country", filter: "agTextColumnFilter", filter: true, sortable: true, width:"200", flex:"300" },
         { headerName: "Score", field: "score", filter: "agTextColumnFilter", filter: true, sortable: true, width:"200", flex:"300" },
         { headerName: "Year", field: "year", filter: "agTextColumnFilter", filter: true, sortable: true, width:"200", flex:"300" }
-      ];
+    ];
 
     function Table(){
         return (
@@ -82,53 +79,44 @@ function Rankings() {
             <AgGridReact
                 columnDefs={columns}
                 rowData={rowData}
+                onRowDoubleClicked={clickHander}
                 pagination={true}
                 paginationPageSize={30}
                 rowSelection={true}
-                onRowDoubleClicked={clickHander}
             >
             </AgGridReact>
         );
     }
 
-    if (selected === "") {
-        return (
-            <div>
-                <div className="jumbo">
-                    <div className="transbox">
-                        <div className="transMessage">
-                                <div className="title">
-                                    Rankings
-                                </div>
+    
+    return (
+        <div>
+            <div className="jumbo">
+                
+                <div className="tBox-message">
+                        <div className="title">
+                            Rankings
                         </div>
+                </div>
+                
+                <div
+                    className="ag-theme-alpine-dark table"
+                    style={{
+                    height: "60vh",
+                    width: "60vw",
+                    marginRight: "6%",
+                    marginLeft : "6%"
+                    }}
+                    >
+                    <div className="years-drop">
+                        <Dropdownmenu />
                     </div>
-                    <div
-                        className="ag-theme-alpine-dark table"
-                        style={{
-                        height: "60vh",
-                        width: "60vw",
-                        marginRight: "5%",
-                        marginLeft : "5%"
-                        }}
-                        >
-                        <div className="industry-drop">
-                            <Dropdownmenu />
-                        </div>
-                        <Table />
-                    </div>
+                    <Table />
                 </div>
             </div>
-        )
-    }
-    else {
-        return(
-            <Redirect to={"./search" + selected} />
-        )
-    }
-
-
-
-   
+        </div>
+    )
+    
 }
 
 export default Rankings;

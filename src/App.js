@@ -29,7 +29,7 @@ function App() {
           <Route path="/login" component={Login}></Route>
           <Route path="/logout" component={Logout}></Route>
           <Route path="/notFound" component={NotFound}></Route>
-          <Redirect from="/" exact to="/search" />
+          <Redirect from="/" exact to="/home" />
           <Redirect to="/notFound" />
         </Switch>
       </main>

@@ -1,14 +1,14 @@
 import React, { useState } from 'react';
 import { Alert } from "react-bs-notifier";
-import { Redirect } from "react-router-dom";
 import NavBar from './navbar';
+import { Redirect } from "react-router-dom";
+import "./ranking.css";
 
 export default function Login() {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [error, setError] = useState(false);
-    //Clear is default - non authenticated user
-    const [authenticated, setAuthenticated] = useState('clear');
+    const [verified, setVerified] = useState('clear');
 
 
     function proccessLogin() {
@@ -24,7 +24,7 @@ export default function Login() {
                 if (!res.error) {
                     setError(false);
                     localStorage.setItem('token', res.token);
-                    setAuthenticated(localStorage.getItem('token'))
+                    setVerified(localStorage.getItem('token'))
                 }
                 else {
                     setError(true);
@@ -34,23 +34,22 @@ export default function Login() {
             })
     }
 
-    if (authenticated === 'clear') {
+    if (verified === 'clear') {
         return (
             <div>
-                <div className="jumbo">
-                    <div className="transbox">
-                        <div className="transMessage">
+                <div className="headDiv">
+                    <div className="tbox">
+                        <div className="tMessage">
                             <div className="title">
                                 Happiness 
                             </div>
                         </div>
                     </div>
-                    <div className="login-div">
+                    <div className="userLoginDvi">
                         <div>
                         <Error error={error} type="Login" />
-                            <p className="login-label">Email</p>
-                            <input
-                                aria-labelledby="submit-button"
+                            <p className="lLogin">Email</p>
+                            <input 
                                 name="email"
                                 id="email"
                                 type="email"
@@ -58,9 +57,8 @@ export default function Login() {
                                 onChange={(e) => setEmail(e.target.value)}
                             />
                             <br />
-                            <p className="login-label" >Password</p>
+                            <p className="lLogin" >Password</p>
                             <input
-                                aria-labelledby="submit-button"
                                 name="password"
                                 id="password"
                                 type="password"
@@ -81,11 +79,11 @@ export default function Login() {
             </div>
         )
     }
-    else if (!error & authenticated !== 'clear') {
+    else if (!error & verified !== 'clear') {
         return (
             <div>
                 <NavBar />
-                <Redirect to="/" />
+                <Redirect to="/register" />
             </div>
         )
     }
@@ -96,16 +94,16 @@ export function Error(props) {
         if (props.code === 409) {
             return (
                 <div className="error-div">
-                    <Alert type="danger" headline="Uh oh">
-                        {props.type} failed, email address already in use
+                    <Alert type="danger" headline="Fatal Error">
+                        {props.type} Email alreday in use
                     </Alert>
                 </div> 
             )
         } else{
             return (
                 <div className="error-div">
-                    <Alert type="danger" headline="Uh oh">
-                        {props.type} failed, please ensure correct details
+                    <Alert type="danger" headline="Fatal Error">
+                        {props.type} Ensure the correct details are used
                     </Alert>
                 </div>
             )

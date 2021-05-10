@@ -6,7 +6,6 @@ import "ag-grid-community/dist/styles/ag-grid.css";
 import "ag-grid-community/dist/styles/ag-theme-balham.css";
 import "ag-grid-community/dist/styles/ag-theme-alpine-dark.css";
 import "./ranking.css";
-import "./home.css";
 
 
 function Search(){
@@ -19,12 +18,12 @@ function Search(){
         fetch("http://131.181.190.87:3000/rankings")
             .then(res => res.json())
             .then(data =>
-                data.map(company => {
+                data.map(searchData => {
                     return {
-                        year: company.year,
-                        rank: company.rank,
-                        score: company.score,
-                        country: company.country,
+                        year: searchData.year,
+                        rank: searchData.rank,
+                        score: searchData.score,
+                        country: searchData.country,
                     };
                 })
             )

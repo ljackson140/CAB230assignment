@@ -5,32 +5,32 @@ import { Error } from './login'
 
 export default function Register(){
     const [innerEmail, setInnerEmail] = useState('');
-    const [password, setPassword] = useState('');
-    const [repeatPassword, setRepeatPassword] = useState('');
+    const [pass, setPass] = useState('');
+    const [repPass, setRepPass] = useState('');
     const [error, setError] = useState(false);
-    const [errorCode, setErrorCode] = useState();
-    const [accepted, setAccepted] = useState(false);
+    const [eCode, setECode] = useState();
+    const [obtained, setObtained] = useState(false);
 
 
     function submitSignup() {
         const url = "http://131.181.190.87:3000/user/register"
-        if (password === repeatPassword) {
+        if (pass === repPass) {
             return fetch(url, {
                 method: "POST",
                 headers: { accept: "application/json", "Content-Type": "application/json" },
-                body: JSON.stringify({ email: innerEmail, password: password })
+                body: JSON.stringify({ email: innerEmail, pass: pass })
             })
                 .then((res) => {
                     if (!res.ok) {
-                        setErrorCode(res.status)
+                        setECode(res.status)
                         setError(true);
                         setInnerEmail('');
-                        setPassword('');
-                        setRepeatPassword('');
+                        setPass('');
+                        setRepPass('');
                     }
                     else {
                         setError(false);
-                        setAccepted(true);
+                        setObtained(true);
                     }
                 })
                 .catch((e) => {
@@ -38,30 +38,29 @@ export default function Register(){
         }
         else {
             setError(true);
-            setErrorCode(400)
+            setECode(400)
             setInnerEmail('');
-            setPassword('');
-            setRepeatPassword('');
+            setPass('');
+            setRepPass('');
         }
     }
 
-    if (accepted === false) {
+    if (obtained === false) {
         return (
             <div>
-                <div className="jumbo">
-                    <div className="transbox">
-                        <div className="transMessage">
+                <div className="headDiv">
+                    <div className="tbox">
+                        <div className="tMessage">
                             <div className="title">
                                 Happiness Portal
                             </div>
                         </div>
                     </div>
-                    <div className="login-div">
-                        <Error error={error} type="Signup" code={errorCode} />
+                    <div className="userRegDiv">
+                        <Error error={error} type="Signup" code={eCode} />
                         <div>
                             <p className="login-label">Email</p>
                             <input
-                                aria-labelledby="email-field"
                                 name="email"
                                 id="email"
                                 type="email"
@@ -71,22 +70,21 @@ export default function Register(){
                             <br />
                             <p className="login-label" >Create Password</p>
                             <input
-                                aria-labelledby="password-field"
-                                name="password"
-                                id="password"
-                                type="password"
-                                value={password}
-                                onChange={(e) => setPassword(e.target.value)}
+                                name="pass"
+                                id="pass"
+                                type="pass"
+                                value={pass}
+                                onChange={(e) => setPass(e.target.value)}
                             />
                             <br />
                             <p className="login-label" >Repeat Password</p>
                             <input
-                                aria-labelledby="repeat-password-field"
-                                name="repeat-password"
-                                id="repeat-password"
-                                type="password"
-                                value={repeatPassword}
-                                onChange={(e) => setRepeatPassword(e.target.value)}
+                                aria-labelledby="repeat-pass-field"
+                                name="repeat-pass"
+                                id="repeat-pass"
+                                type="pass"
+                                value={repPass}
+                                onChange={(e) => setRepPass(e.target.value)}
                             />
                             <br />
                             <button
@@ -101,7 +99,8 @@ export default function Register(){
                 </div>
             </div>
         );
-    } else if (accepted === true) {
+    } 
+    else if (obtained === true) {
         return (
             <div>
                 <Redirect to="/login" />
