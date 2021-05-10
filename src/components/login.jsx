@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Alert } from "react-bs-notifier";
 import NavBar from './navbar';
 import { Redirect } from "react-router-dom";
-import "./ranking.css";
+import "./styles/homee.css";
 
 export default function Login() {
     const [email, setEmail] = useState('');
@@ -59,15 +59,15 @@ export default function Login() {
                             <br />
                             <p className="lLogin" >Password</p>
                             <input
-                                name="password"
-                                id="password"
-                                type="password"
+                                name="pass"
+                                id="pass"
+                                type="pass"
                                 value={password}
                                 onChange={(e) => setPassword(e.target.value)}
                             />
                             <br />
                             <button
-                                id="submit-button"
+                                id="sButton"
                                 type="button"
                                 onClick={() => { proccessLogin() }}
                             >

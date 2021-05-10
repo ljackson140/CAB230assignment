@@ -4,7 +4,7 @@ import { Dropdown, DropdownToggle, DropdownMenu, DropdownItem, Button } from 're
 import "ag-grid-community/dist/styles/ag-grid.css";
 import "ag-grid-community/dist/styles/ag-theme-balham.css";
 import "ag-grid-community/dist/styles/ag-theme-alpine-dark.css";
-import "./ranking.css";
+import "./styles/ranking.css";
 
 
 const years = [
@@ -27,12 +27,12 @@ function Rankings() {
         fetch("http://131.181.190.87:3000/rankings" + year)
             .then(res => res.json())
             .then(data =>
-                data.map(company => {
+                data.map(rankingData => {
                     return {
-                        rank: company.rank,
-                        country: company.country,
-                        score: company.score,
-                        year: company.year,
+                        rank: rankingData.rank,
+                        country: rankingData.country,
+                        score: rankingData.score,
+                        year: rankingData.year,
                     };
                 })
             )
