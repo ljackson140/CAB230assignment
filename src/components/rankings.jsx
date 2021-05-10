@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import { AgGridReact } from "ag-grid-react";
-import { AgGridColumn } from 'ag-grid-react/lib/agGridColumn';
 import { Dropdown, DropdownToggle, DropdownMenu, DropdownItem, Button } from 'reactstrap';
 import { Redirect } from 'react-router-dom';
 import "ag-grid-community/dist/styles/ag-grid.css";
@@ -9,8 +8,6 @@ import "ag-grid-community/dist/styles/ag-theme-alpine-dark.css";
 import "./ranking.css";
 import "./home.css";
 
-// const API_URL = "http://131.181.190.87:3000";
-// const url = `${API_URL}/rankings`;
 
 const years = [
     {title: "2015", link: "?year=2015"},
@@ -28,22 +25,6 @@ function Rankings() {
     const [selected, setSelected] = useState("");
     const [year, setYear] = useState("");
 
-    // useEffect(() => {
-    //     fetch(url + year) 
-    //       .then((res) => res.json())
-    //       .then((data) =>
-    //         data.map((info) => {
-    //           return {
-    //             rank: info.rank,
-    //             country: info.country,
-    //             score: info.score,
-    //             year: info.year,
-    //           };
-    //         })
-    //       )
-    //       .then((info) => setRowData(info));
-    // }, [year]);
-
     useEffect(() => {
         fetch("http://131.181.190.87:3000/rankings" + year)
             .then(res => res.json())
@@ -57,8 +38,7 @@ function Rankings() {
                     };
                 })
             )
-            .then(allCompanies => setRowData(allCompanies));
-        console.log(year);
+            .then(senData => setRowData(senData));
     }, [year]);
 
     function setYearFunc() {
