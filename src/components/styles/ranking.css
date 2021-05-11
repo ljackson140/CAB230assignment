@@ -26,8 +26,6 @@ h6 {
 
 
 
-
-
 .tBox-message{
     color: rgb(116, 134, 34);
     text-align: center;
@@ -40,6 +38,7 @@ p{
 
 .title{
     font-size: 5rem;
+    font-weight: 500;
 }
 
 .table {

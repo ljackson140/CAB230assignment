@@ -1,0 +1,35 @@
+.headDiv{
+    margin: 0rem 3rem;
+    background-color: rgb(233, 233, 91);
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+}
+
+.headDiv Button{
+    width: 100%;
+    padding: 2rem;
+    margin-top: 8rem;
+    border-bottom-left-radius: 20px;
+    border-bottom-right-radius: 20px;
+}
+
+.headDiv input {
+    padding: 1rem 3rem;
+  }
+
+.tMessage{
+    text-align: center;
+    padding: 4rem;
+}   
+
+.password-form,
+.email-form {
+  padding: 2rem;
+  text-align: center;
+}
+
+.userLoginDiv label {
+    width: 60%;
+    color: black;
+    border-radius: 20px;
+}

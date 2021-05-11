@@ -3,6 +3,7 @@ import { Alert } from "react-bs-notifier";
 import NavBar from './navbar';
 import { Redirect } from "react-router-dom";
 import "./styles/homee.css";
+import "./styles/login.css";
 
 export default function Login() {
     const [email, setEmail] = useState('');
@@ -41,39 +42,42 @@ export default function Login() {
                     <div className="tbox">
                         <div className="tMessage">
                             <div className="title">
-                                Happiness 
+                                Login 
                             </div>
                         </div>
                     </div>
-                    <div className="userLoginDvi">
+                    <div className="userLoginDiv">
                         <div>
-                        <Error error={error} type="Login" />
-                            <p className="lLogin">Email</p>
-                            <input 
-                                name="email"
-                                id="email"
-                                type="email"
-                                value={email}
-                                onChange={(e) => setEmail(e.target.value)}
-                            />
-                            <br />
-                            <p className="lLogin" >Password</p>
-                            <input
-                                name="pass"
-                                id="pass"
-                                type="pass"
-                                value={password}
-                                onChange={(e) => setPassword(e.target.value)}
-                            />
-                            <br />
-                            <button
-                                id="sButton"
-                                type="button"
-                                onClick={() => { proccessLogin() }}
-                            >
-                                Login
-                            </button>
-                        </div>
+                            <Error error={error} type="Login" />
+                                <div className="email-form">
+                                    <label for="name">Email:</label>
+                                    <input 
+                                        name="email"
+                                        id="email"
+                                        type="email"
+                                        value={email}
+                                        onChange={(e) => setEmail(e.target.value)}
+                                    />
+                                </div>
+                                
+                                <div className="password-form">
+                                    <label for="pass">Password:</label>
+                                    <input
+                                        name="pass"
+                                        id="pass"
+                                        type="pass"
+                                        value={password}
+                                        onChange={(e) => setPassword(e.target.value)}
+                                    />
+                                </div>
+                                <button
+                                    id="sButton"
+                                    type="button"
+                                    onClick={() => { proccessLogin() }}
+                                >
+                                    Login
+                                </button>
+                            </div>
                     </div>
                 </div>
             </div>

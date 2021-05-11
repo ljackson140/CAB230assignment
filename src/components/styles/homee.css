@@ -1,8 +1,12 @@
-
+.container{
+  background-color: rgb(240, 240, 121);
+}
 
 .hTitle {
   font-size: 5rem;
+  color: black;
   margin: 0px;
+  background-color: rgb(240, 240, 121);
 }
 
 .hContent {
@@ -13,11 +17,12 @@
 }
 
 .hero {
+  background-color: rgb(240, 240, 121);
   min-height: 40rem;
-  background-size: cover;
   text-align: center;
   background-image: url("/src/components/smile.png");
-  background-color: rgb(245, 242, 106);
+  background-size: cover;
+
 }
 
 html,
@@ -26,11 +31,19 @@ body {
   padding: 5;
   line-height: 1.5;
   font-size: 16px;
+  background-color: rgb(240, 240, 121);
 }
 
 
 
 .header1 {
   text-align: center;
-  margin-bottom: 30px;
+  margin-bottom: 3rem;
+  background-color: rgb(240, 240, 121);
+}
+
+.part1{
+  padding-top: 5rem;
+  border-style: solid;
+  border: black;
 }
