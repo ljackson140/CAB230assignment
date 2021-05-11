@@ -15,7 +15,7 @@
 
 .headDiv input {
     padding: 1rem 3rem;
-  }
+}
 
 .tMessage{
     text-align: center;
@@ -23,12 +23,12 @@
 }   
 
 .password-form,
-.email-form {
+.email-form{
   padding: 2rem;
   text-align: center;
 }
 
-.userLoginDiv label {
+.userRegisDiv label {
     width: 20%;
     color: black;
     border-radius: 20px;

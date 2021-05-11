@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Redirect } from "react-router-dom";
 import { Error } from './login'
+import "./styles/register.css";
 
 
 export default function Register(){
@@ -52,41 +53,46 @@ export default function Register(){
                     <div className="tbox">
                         <div className="tMessage">
                             <div className="title">
-                                Happiness Portal
+                                Registration 
                             </div>
                         </div>
                     </div>
-                    <div className="userRegDiv">
+                    <div className="userRegisDiv">
                         <Error error={error} type="Signup" code={eCode} />
                         <div>
-                            <p className="login-label">Email</p>
-                            <input
-                                name="email"
-                                id="email"
-                                type="email"
-                                value={innerEmail}
-                                onChange={(e) => setInnerEmail(e.target.value)}
-                            />
-                            <br />
-                            <p className="login-label" >Create Password</p>
-                            <input
-                                name="pass"
-                                id="pass"
-                                type="pass"
-                                value={pass}
-                                onChange={(e) => setPass(e.target.value)}
-                            />
-                            <br />
-                            <p className="login-label" >Repeat Password</p>
-                            <input
-                                aria-labelledby="repeat-pass-field"
-                                name="repeat-pass"
-                                id="repeat-pass"
-                                type="pass"
-                                value={repPass}
-                                onChange={(e) => setRepPass(e.target.value)}
-                            />
-                            <br />
+                            <div className="email-form">
+                                <label for="name">Email:</label>
+                                <input
+                                    name="email"
+                                    id="email"
+                                    type="email"
+                                    value={innerEmail}
+                                    onChange={(e) => setInnerEmail(e.target.value)}
+                                /> 
+                            </div>
+                            
+                            <div className="password-form">
+                                <label for="name">Create Password:</label>
+                                <input
+                                    name="pass"
+                                    id="pass"
+                                    type="pass"
+                                    value={pass}
+                                    onChange={(e) => setPass(e.target.value)}
+                                />
+                            </div>
+                            
+                            <div className="password-form">
+                                <label for="name">Repeat Password:</label>
+                                <input
+                                    aria-labelledby="repeat-pass-field"
+                                    name="repeat-pass"
+                                    id="repeat-pass"
+                                    type="pass"
+                                    value={repPass}
+                                    onChange={(e) => setRepPass(e.target.value)}
+                                />
+                            </div>
                             <button
                                 id="submit-button"
                                 type="button"
