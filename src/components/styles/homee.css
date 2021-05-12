@@ -20,7 +20,7 @@
   background-color: rgb(240, 240, 121);
   min-height: 40rem;
   text-align: center;
-  background-image: url("/src/components/smile.png");
+  background-image: url("/src/components/imgs/smile.png");
   background-size: cover;
 
 }
