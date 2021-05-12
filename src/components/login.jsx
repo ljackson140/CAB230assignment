@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import { Alert } from "react-bs-notifier";
 import NavBar from './navbar';
 import { Redirect } from "react-router-dom";
 import "./styles/homee.css";
@@ -87,33 +86,9 @@ export default function Login() {
         return (
             <div>
                 <NavBar />
-                <Redirect to="/register" />
+                <Redirect to="/home" />
             </div>
         )
     }
 }
 
-export function Error(props) {
-    if (props.error) {
-        if (props.code === 409) {
-            return (
-                <div className="error-div">
-                    <Alert type="danger" headline="Fatal Error">
-                        {props.type} Email alreday in use
-                    </Alert>
-                </div> 
-            )
-        } else{
-            return (
-                <div className="error-div">
-                    <Alert type="danger" headline="Fatal Error">
-                        {props.type} Ensure the correct details are used
-                    </Alert>
-                </div>
-            )
-        }
-    }
-    else {
-        return (<div></div>)
-    }
-}

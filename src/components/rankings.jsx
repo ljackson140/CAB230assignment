@@ -95,7 +95,7 @@ function Rankings() {
                 
                 <div className="tBox-message">
                         <div className="title">
-                            Rankings
+                            <h1>Rankings</h1>
                         </div>
                 </div>
                 

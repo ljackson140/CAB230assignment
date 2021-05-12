@@ -15,10 +15,19 @@ p{
     font-size: calc(1em + 1vw);
 }
 
-/*---------------Button styling------------------*/
-.years-drop{
-    text-align: center;
-    margin-bottom: 1.2rem;
+/*---------------Search styling------------------*/
+.search-bar{
+    padding-bottom: 2rem;
+}
+
+.search-bar input{
+    border: 1px solid grey;
+    border-radius: 5px;
+    height: 3rem;
+    width: 100%;
+    padding: 2px 23px 2px 30px;
+    outline: 3rem;
+    background-color: #f5f5f5;
 }
 
 /*---------------Table styling------------------*/
@@ -42,11 +51,18 @@ p{
     font-size: 5rem;
     font-weight: 500;
 }
-.tBox-message h1{
+.search-title h1{
     color: rgb(0, 0, 0);
     border: 0.9rem black;
     border-style: solid;
     text-align: center;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.search-title h1{
+    color: rgb(0, 0, 0);
+    text-align: center;
+    font-weight: 300;
     font-family: Arial, Helvetica, sans-serif;
 }
 

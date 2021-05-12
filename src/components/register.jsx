@@ -1,37 +1,36 @@
 import React, { useState } from 'react';
 import { Redirect } from "react-router-dom";
-import { Error } from './login'
 import "./styles/register.css";
+import { Error } from './error'
 
 
-export default function Register(){
+export default function Signup() {
     const [innerEmail, setInnerEmail] = useState('');
-    const [pass, setPass] = useState('');
-    const [repPass, setRepPass] = useState('');
+    const [password, setPassword] = useState('');
+    const [repeatPassword, setRepeatPassword] = useState('');
     const [error, setError] = useState(false);
-    const [eCode, setECode] = useState();
-    const [obtained, setObtained] = useState(false);
+    const [errorCode, setErrorCode] = useState();
+    const [accepted, setAccepted] = useState(false);
 
 
     function submitSignup() {
         const url = "http://131.181.190.87:3000/user/register"
-        if (pass === repPass) {
+        if (password) {
             return fetch(url, {
                 method: "POST",
                 headers: { accept: "application/json", "Content-Type": "application/json" },
-                body: JSON.stringify({ email: innerEmail, pass: pass })
+                body: JSON.stringify({ email: innerEmail, password: password })
             })
                 .then((res) => {
                     if (!res.ok) {
-                        setECode(res.status)
+                        setErrorCode(res.status)
                         setError(true);
                         setInnerEmail('');
-                        setPass('');
-                        setRepPass('');
+                        setPassword('');
                     }
                     else {
                         setError(false);
-                        setObtained(true);
+                        setAccepted(true);
                     }
                 })
                 .catch((e) => {
@@ -39,82 +38,65 @@ export default function Register(){
         }
         else {
             setError(true);
-            setECode(400)
+            setErrorCode(400)
             setInnerEmail('');
-            setPass('');
-            setRepPass('');
+            setPassword('');
         }
     }
 
-    if (obtained === false) {
+    if (accepted === false) {
         return (
             <div>
-                <div className="headDiv">
-                    <div className="tbox">
-                        <div className="tMessage">
+                <div className="jumbo">
+                    <div className="transbox">
+                        <div className="transMessage">
                             <div className="title">
-                                Registration 
+                                Happiness
                             </div>
                         </div>
                     </div>
-                    <div className="userRegisDiv">
-                        <Error error={error} type="Signup" code={eCode} />
+                    <div className="registration-form">
+                        <Error error={error} type="registration" code={errorCode} />
                         <div>
-                            <div className="email-form">
-                                <label for="name">Email:</label>
+                            <div>
+                                <p className="login-label">Email</p>
                                 <input
+                                    aria-labelledby="email-field"
                                     name="email"
                                     id="email"
                                     type="email"
                                     value={innerEmail}
                                     onChange={(e) => setInnerEmail(e.target.value)}
-                                /> 
-                            </div>
-                            
-                            <div className="password-form">
-                                <label for="name">Create Password:</label>
-                                <input
-                                    name="pass"
-                                    id="pass"
-                                    type="pass"
-                                    value={pass}
-                                    onChange={(e) => setPass(e.target.value)}
                                 />
                             </div>
                             
-                            <div className="password-form">
-                                <label for="name">Repeat Password:</label>
+                            <div>
+                                <p className="login-label" >Create Password</p>
                                 <input
-                                    aria-labelledby="repeat-pass-field"
-                                    name="repeat-pass"
-                                    id="repeat-pass"
-                                    type="pass"
-                                    value={repPass}
-                                    onChange={(e) => setRepPass(e.target.value)}
+                                    aria-labelledby="password-field"
+                                    name="password"
+                                    id="password"
+                                    type="password"
+                                    value={password}
+                                    onChange={(e) => setPassword(e.target.value)}
                                 />
                             </div>
                             <button
                                 id="submit-button"
                                 type="button"
-                                onClick={() => { submitSignup() }}
-                            >
+                                onClick={() => { submitSignup() }}>
                                 Signup
-                        </button>
+                            </button>
                         </div>
                     </div>
                 </div>
             </div>
         );
-    } 
-    else if (obtained === true) {
+    } else if (accepted === true) {
         return (
             <div>
                 <Redirect to="/login" />
             </div>
         )
     }
-
 }
-
-
- 

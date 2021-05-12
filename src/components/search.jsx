@@ -5,7 +5,7 @@ import 'ag-grid-enterprise';
 import "ag-grid-community/dist/styles/ag-grid.css";
 import "ag-grid-community/dist/styles/ag-theme-balham.css";
 import "ag-grid-community/dist/styles/ag-theme-alpine-dark.css";
-import "./styles/ranking.css";
+import "./styles/search.css";
 
 
 
@@ -50,10 +50,12 @@ function Search(){
 
     return (
         <div className="App">
-          <h1 align="center">Happiness Search</h1>
-          <h4 align='center'>search for your country's Happiness</h4>
-    
-          <div>
+          <div className="search-title">
+            <h1>Happiness Search</h1>
+            <h4>Search for your country's Happiness</h4>
+          </div>
+          
+          <div className="search-bar">
             <input 
                 type="search" 
                 onChange={onFilterTextChange} 

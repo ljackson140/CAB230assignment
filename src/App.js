@@ -6,7 +6,6 @@ import Search from "./components/search";
 import Factors from "./components/factors";
 import Register from "./components/register";
 import Login from "./components/login";
-import Logout from "./components/logout";
 import NotFound from "./components/notFound";
 import NavBar from "./components/navbar";
 import "./App.css";
@@ -27,7 +26,6 @@ function App() {
           <Route path="/factors" component={Factors}></Route>
           <Route path="/Register" component={Register}></Route>
           <Route path="/login" component={Login}></Route>
-          <Route path="/logout" component={Logout}></Route>
           <Route path="/notFound" component={NotFound}></Route>
           <Redirect from="/" exact to="/home" />
           <Redirect to="/notFound" />

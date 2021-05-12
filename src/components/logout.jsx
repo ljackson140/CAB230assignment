@@ -1,7 +1,15 @@
 import React from 'react';
+import { NavLink } from "react-router-dom";
 
-const Logout = () => {
-    return <h1>Logout</h1>;
+export default function Logout() {
+    if (localStorage.getItem("token") !== 'clear'){
+        window.location.reload();
+    }
+    localStorage.setItem("token", 'clear');
+    return (
+        <div>
+            <NavLink to="/home" />
+        </div>
+    )
+
 }
- 
-export default Logout;
