@@ -40,6 +40,7 @@ const NavBar = () => {
 
     )
   } else {
+
     return (
       <nav className="navbar navbar-expand-lg">
         <Link className="navbar-brand" to="/">
@@ -60,6 +61,16 @@ const NavBar = () => {
             <li className="nav-item">
               <NavLink className="nav-link" to="/factors">
                 Factors
+              </NavLink>
+            </li>
+            <li className="nav-item">
+              <NavLink className="nav-link" to="/register">
+                Register
+              </NavLink>
+            </li>
+            <li className="nav-item">
+              <NavLink className="nav-link" to="/login">
+                Login
               </NavLink>
             </li>
             <li className="nav-item">

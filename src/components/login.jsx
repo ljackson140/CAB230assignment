@@ -3,15 +3,22 @@ import NavBar from './navbar';
 import { Redirect } from "react-router-dom";
 import "./styles/homee.css";
 import "./styles/login.css";
+import { Error } from './error';
 
 export default function Login() {
+
+    //error
+    const [error, setError] = useState(false);
+
+    //credentials
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
-    const [error, setError] = useState(false);
+    
+    //verification
     const [verified, setVerified] = useState('clear');
 
-
-    function proccessLogin() {
+    //call to API
+    function loginCall() {
         const url = "http://131.181.190.87:3000/user/login"
         localStorage.setItem('token', 'clear');
         return fetch(url, {
@@ -34,16 +41,21 @@ export default function Login() {
             })
     }
 
-    if (verified === 'clear') {
+    if (!error & verified !== 'clear') {
+        return (
+            <div>
+                <NavBar />
+                <Redirect to="/home" />
+            </div>
+        )
+    }
+
+    else if (verified === 'clear') {
         return (
             <div>
                 <div className="headDiv">
-                    <div className="tbox">
-                        <div className="tMessage">
-                            <div className="title">
-                                Login 
-                            </div>
-                        </div>
+                    <div className="tMessage">                          
+                        <h1>Login</h1> 
                     </div>
                     <div className="userLoginDiv">
                         <div>
@@ -72,7 +84,7 @@ export default function Login() {
                                 <button
                                     id="sButton"
                                     type="button"
-                                    onClick={() => { proccessLogin() }}
+                                    onClick={() => { loginCall() }}
                                 >
                                     Login
                                 </button>
@@ -82,13 +94,6 @@ export default function Login() {
             </div>
         )
     }
-    else if (!error & verified !== 'clear') {
-        return (
-            <div>
-                <NavBar />
-                <Redirect to="/home" />
-            </div>
-        )
-    }
+    
 }
 

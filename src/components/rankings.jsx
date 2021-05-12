@@ -91,12 +91,11 @@ function Rankings() {
     
     return (
         <div>
-            <div className="jumbo">
-                
+            <div className="alt">                
                 <div className="tBox-message">
-                        <div className="title">
-                            <h1>Rankings</h1>
-                        </div>
+                    
+                    <h1>Rankings</h1>
+                    
                 </div>
                 
                 <div
@@ -104,8 +103,8 @@ function Rankings() {
                     style={{
                     height: "60vh",
                     width: "60vw",
-                    marginRight: "6%",
-                    marginLeft : "6%"
+                    marginRight: "2%",
+                    marginLeft : "2%"
                     }}
                     >
                     <div className="years-drop">

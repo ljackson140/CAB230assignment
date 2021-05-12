@@ -1,14 +1,17 @@
 import React from 'react';
-import { NavLink } from "react-router-dom";
+import { Route } from "react-router-dom";
 
 export default function Logout() {
-    if (localStorage.getItem("token") !== 'clear'){
+
+    const condition = localStorage.getItem("token") !== 'clear';
+
+    if (condition){
         window.location.reload();
     }
     localStorage.setItem("token", 'clear');
     return (
         <div>
-            <NavLink to="/home" />
+            <Route path="/home" component={Home}></Route>
         </div>
     )
 

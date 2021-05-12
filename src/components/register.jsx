@@ -1,19 +1,23 @@
 import React, { useState } from 'react';
 import { Redirect } from "react-router-dom";
 import "./styles/register.css";
-import { Error } from './error'
+import { Error } from './error';
 
 
 export default function Signup() {
-    const [innerEmail, setInnerEmail] = useState('');
-    const [password, setPassword] = useState('');
-    const [repeatPassword, setRepeatPassword] = useState('');
+    //Error area
     const [error, setError] = useState(false);
     const [errorCode, setErrorCode] = useState();
-    const [accepted, setAccepted] = useState(false);
 
+    //redentials area
+    const [innerEmail, setInnerEmail] = useState('');
+    const [password, setPassword] = useState('');
+    
+    //verified area
+    const [verified, setVerified] = useState(false);
 
-    function submitSignup() {
+    //call to API
+    function Registration() {
         const url = "http://131.181.190.87:3000/user/register"
         if (password) {
             return fetch(url, {
@@ -30,7 +34,7 @@ export default function Signup() {
                     }
                     else {
                         setError(false);
-                        setAccepted(true);
+                        setVerified(true);
                     }
                 })
                 .catch((e) => {
@@ -44,24 +48,22 @@ export default function Signup() {
         }
     }
 
-    if (accepted === false) {
+    if (verified === false) {
         return (
             <div>
-                <div className="jumbo">
+                <div className="headDiv">
                     <div className="transbox">
-                        <div className="transMessage">
-                            <div className="title">
-                                Happiness
-                            </div>
+                        <div className="transMessage">                         
+                            <h1>Register</h1>                  
                         </div>
                     </div>
-                    <div className="registration-form">
+                    <div className="userRegisDiv">
                         <Error error={error} type="registration" code={errorCode} />
                         <div>
-                            <div>
-                                <p className="login-label">Email</p>
+                            <div className="email-form">
+                                <label for="email">Email:</label>
                                 <input
-                                    aria-labelledby="email-field"
+                                    aria-labelledby="inputEmail"
                                     name="email"
                                     id="email"
                                     type="email"
@@ -70,8 +72,8 @@ export default function Signup() {
                                 />
                             </div>
                             
-                            <div>
-                                <p className="login-label" >Create Password</p>
+                            <div className="password-form">
+                                <label for="name">Password:</label>
                                 <input
                                     aria-labelledby="password-field"
                                     name="password"
@@ -84,7 +86,7 @@ export default function Signup() {
                             <button
                                 id="submit-button"
                                 type="button"
-                                onClick={() => { submitSignup() }}>
+                                onClick={() => { Registration() }}>
                                 Signup
                             </button>
                         </div>
@@ -92,7 +94,7 @@ export default function Signup() {
                 </div>
             </div>
         );
-    } else if (accepted === true) {
+    } else if (verified === true) {
         return (
             <div>
                 <Redirect to="/login" />

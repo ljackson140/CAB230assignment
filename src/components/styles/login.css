@@ -20,7 +20,12 @@
 .tMessage{
     text-align: center;
     padding: 4rem;
-}   
+}  
+
+.tMessage h1{
+    font-size: 5rem;
+    font-weight: 500;
+}
 
 .password-form,
 .email-form {
